@@ -8,7 +8,7 @@ Il se compose de plusieurs parties:
 * un noeud Kibana qui permet de visualiser les données
 
 ```bash
-nohup python3 script.py
+nohup python3 script.py &
 ```
 
 ![root-me-visualizer](https://user-images.githubusercontent.com/12548183/159528881-47d992b1-9648-4c03-beb3-06df77fa34bc.png)
