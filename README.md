@@ -12,3 +12,8 @@ nohup python3 script.py
 ```
 
 ![root-me-visualizer](https://user-images.githubusercontent.com/12548183/159528881-47d992b1-9648-4c03-beb3-06df77fa34bc.png)
+
+
+## Améliorations futures
+* Formulaire web pour insérer son uid dans une bdd
+* le script Python se connectera à une bdd pour récupérer la liste des uid
