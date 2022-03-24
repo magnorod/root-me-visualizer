@@ -65,14 +65,15 @@ if __name__ == '__main__':
     """
     print(pres)
 
-    elastic_ip="IP_A_CHANGER"
-    cookies = {"api_key": "API_KEY_A_CHANGER"}
-    uids=[412,38837,258150,139379,359178,487915,436761,122852,149440,225265,609569,449312,408261,491166,419693,5384,411124,112697,222479,525710,41353,348505,145667,406883,226807,354649,382779]
+    elastic_ip="A_CHANGER"
+    cookies = {"api_key": "A_CHANGER"}
+    uids=[38837,412,258150,139379,359178,487915,436761,122852,149440,225265,609569,449312,408261,491166,419693,5384,411124,112697,222479,525710,41353,348505,145667,406883,226807,354649,382779]
     index_name="rootme-0000002"
-    elastic_password="PASS_A_CHANGER"
+    elastic_password="A_CHANGER"
     es = Elasticsearch(
         "https://"+elastic_ip+":9200",
         basic_auth=("elastic", elastic_password),
+        request_timeout=15,
         verify_certs=False
     )
 
@@ -90,9 +91,9 @@ if __name__ == '__main__':
             # print(validations[i])
             id_challenge=(validations[j]["id_challenge"])
             # récupérer nom du challenge
-            url="https://api.www.root-me.org/challenges/"+id_challenge
-            resp2 = requests.get(url, cookies=cookies)
+            resp2 = requests.get("https://api.www.root-me.org/challenges/"+str(id_challenge), cookies=cookies)
             if resp2.status_code != 200:
+                print(resp2)
                 raise Exception(resp2.status_code)
             #endif
             data2 = resp2.json()
@@ -113,7 +114,7 @@ if __name__ == '__main__':
         #endfor
         if i == (len(uids)-1): # boucle infinie avec parcours du tableau depuis le début
             i=0
-            time.sleep(600) # pause de 10 min pour éviter de surcharger l'API
+            time.sleep(3600) # pause pour éviter de surcharger l'API 429 (Too Many Requests)
         else:
             i=i+1
         #endif
